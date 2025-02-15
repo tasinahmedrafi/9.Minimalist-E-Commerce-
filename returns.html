@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns Policy - Minimalist Skincare</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo"><a href="index.html">Minimalist</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Menu</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="index.html#technology">Technology</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="shop-now-btn" onclick="window.location.href='index.html#products'">Shop Now</button>
+                <button class="cart-btn">
+                    Cart
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Returns Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <span class="hero-tag">Customer Care</span>
+            <h1>Returns Policy</h1>
+            <p>Easy returns within 14 days of purchase</p>
+            <div class="hero-features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Hassle-Free Returns</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <span>Free Pickup</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-undo"></i>
+                    <span>Quick Refunds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Returns Information -->
+    <section class="returns-section">
+        <div class="container">
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="action-card" id="trackButton">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Track Return</h3>
+                    <p>Check your return status</p>
+                </div>
+                <a href="#initiate" class="action-card">
+                    <i class="fas fa-undo-alt"></i>
+                    <h3>Start Return</h3>
+                    <p>Initiate a new return</p>
+                </a>
+                <a href="#help" class="action-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>Get Help</h3>
+                    <p>Return support</p>
+                </a>
+            </div>
+
+            <!-- Track Return Modal -->
+            <div class="track-modal" id="trackModal">
+                <div class="track-content">
+                    <button class="close-track">&times;</button>
+                    <div class="track-header">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Track Your Return</h3>
+                        <p>Enter your return ID to check the status</p>
+                    </div>
+                    <form class="track-form" id="trackForm">
+                        <div class="form-group">
+                            <input type="text" id="returnId" placeholder="Return ID (e.g., RTN123456)" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email Address" required>
+                        </div>
+                        <button type="submit" class="track-submit-btn">
+                            <i class="fas fa-search"></i>
+                            Track Return
+                        </button>
+                    </form>
+                    <div class="track-help">
+                        <p>Can't find your return ID?</p>
+                        <a href="#help" class="help-link">Get Help</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Returns Stats -->
+            <div class="returns-stats">
+                <div class="stat-item">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">Days Return Window</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Money Back</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support</span>
+                </div>
+            </div>
+
+            <!-- Returns Process -->
+            <div class="returns-process">
+                <h2>Returns Process</h2>
+                <div class="process-grid">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3>Initiate Return</h3>
+                        <p>Login to your account and submit a return request within 14 days of delivery</p>
+                    </div>
+
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Package Item</h3>
+                        <p>Pack the unused item in its original packaging with all tags intact</p>
+                    </div>
+
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </div>
+                        <h3>Schedule Pickup</h3>
+                        <p>We'll arrange a free pickup from your location</p>
+                    </div>
+
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3>Get Refund</h3>
+                        <p>Receive your refund within 5-7 business days after return verification</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Return Policy Details -->
+            <div class="policy-details">
+                <h2>Return Policy Details</h2>
+                
+                <div class="policy-block">
+                    <h3>Eligible Items</h3>
+                    <div class="policy-content">
+                        <div class="policy-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <ul>
+                            <li>Unopened and unused products</li>
+                            <li>Items in original packaging</li>
+                            <li>Products with tags intact</li>
+                            <li>Items within 14 days of delivery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="policy-block">
+                    <h3>Non-Returnable Items</h3>
+                    <div class="policy-content">
+                        <div class="policy-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <ul>
+                            <li>Opened or used products</li>
+                            <li>Items without original packaging</li>
+                            <li>Products without tags</li>
+                            <li>Sale or clearance items</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="policy-block">
+                    <h3>Refund Process</h3>
+                    <ul>
+                        <li>Original payment method refund</li>
+                        <li>5-7 business days processing</li>
+                        <li>Free return shipping</li>
+                        <li>Store credit option available</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Return Instructions -->
+            <div class="return-instructions">
+                <h2>How to Return</h2>
+                <div class="instructions-grid">
+                    <div class="instruction-step">
+                        <span class="step-number">1</span>
+                        <h3>Login to Account</h3>
+                        <p>Access your account and go to order history</p>
+                    </div>
+
+                    <div class="instruction-step">
+                        <span class="step-number">2</span>
+                        <h3>Select Order</h3>
+                        <p>Choose the order and items you want to return</p>
+                    </div>
+
+                    <div class="instruction-step">
+                        <span class="step-number">3</span>
+                        <h3>Submit Request</h3>
+                        <p>Fill out the return form and select reason</p>
+                    </div>
+
+                    <div class="instruction-step">
+                        <span class="step-number">4</span>
+                        <h3>Schedule Pickup</h3>
+                        <p>Choose a convenient pickup date and time</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div class="returns-support">
+                <div class="support-content">
+                    <h2>Need Help?</h2>
+                    <p>Our customer support team is here to assist you with your return</p>
+                    <div class="support-options">
+                        <a href="#contact" class="support-btn">
+                            <i class="fas fa-headset"></i>
+                            Contact Support
+                        </a>
+                        <button class="track-btn" onclick="openTrackModal()">
+                            <i class="fas fa-box"></i>
+                            Track Return
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-to-home">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Track Return Modal and Button Functionality
+        const trackButton = document.getElementById('trackButton');
+        const trackModal = document.getElementById('trackModal');
+        const closeTrack = document.querySelector('.close-track');
+        const trackForm = document.getElementById('trackForm');
+
+        function openTrackModal() {
+            trackModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTrackModal() {
+            trackModal.classList.remove('active');
+            document.body.style.overflow = '';
+            trackForm.reset();
+        }
+
+        trackButton.addEventListener('click', openTrackModal);
+
+        closeTrack.addEventListener('click', closeTrackModal);
+
+        trackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add loading state
+            const submitBtn = trackForm.querySelector('.track-submit-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Tracking...';
+            
+            // Get form data
+            const returnId = document.getElementById('returnId').value;
+            const email = document.getElementById('email').value;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success state
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Return Found!';
+                submitBtn.style.background = '#4CAF50';
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-search"></i> Track Return';
+                    submitBtn.style.background = '';
+                    closeTrackModal();
+                }, 1500);
+            }, 2000);
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === trackModal) {
+                closeTrackModal();
+            }
+        });
+
+        // Add escape key support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && trackModal.classList.contains('active')) {
+                closeTrackModal();
+            }
+        });
+    </script>
+</body>
+</html> 

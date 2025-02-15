@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - Minimalist Skincare</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo"><a href="index.html">Minimalist</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Menu</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="index.html#technology">Technology</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="shop-now-btn" onclick="window.location.href='index.html#products'">Shop Now</button>
+                <button class="cart-btn">
+                    Cart
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Track Order Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <span class="hero-tag">Order Tracking</span>
+            <h1>Track Your Order</h1>
+            <p>Real-time updates on your package location</p>
+        </div>
+    </section>
+
+    <!-- Track Order Section -->
+    <section class="track-order-section">
+        <div class="container">
+            <!-- Track Form -->
+            <div class="track-order-form">
+                <div class="form-header">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h2>Enter Order Details</h2>
+                    <p>Track your order using order ID and email address</p>
+                </div>
+                <form id="orderTrackForm">
+                    <div class="form-group">
+                        <label for="orderId">Order ID</label>
+                        <input type="text" id="orderId" placeholder="Enter your order ID (e.g., ORD123456)" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderEmail">Email Address</label>
+                        <input type="email" id="orderEmail" placeholder="Enter your email address" required>
+                    </div>
+                    <button type="submit" class="track-order-btn">
+                        <i class="fas fa-search"></i>
+                        Track Now
+                    </button>
+                </form>
+            </div>
+
+            <!-- Tracking Result -->
+            <div class="tracking-result" id="trackingResult" style="display: none;">
+                <div class="result-header">
+                    <h3>Order Status</h3>
+                    <div class="order-info">
+                        <span class="order-number">Order #: <strong id="displayOrderId"></strong></span>
+                        <span class="order-date">Order Date: <strong id="orderDate"></strong></span>
+                    </div>
+                </div>
+
+                <div class="tracking-timeline">
+                    <div class="timeline-item active">
+                        <div class="timeline-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Order Confirmed</h4>
+                            <p>Your order has been confirmed</p>
+                            <span class="timeline-date">Processing</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Order Processed</h4>
+                            <p>Your order has been processed and packed</p>
+                            <span class="timeline-date">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>In Transit</h4>
+                            <p>Your order is on the way</p>
+                            <span class="timeline-date">Pending</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Delivered</h4>
+                            <p>Package has been delivered</p>
+                            <span class="timeline-date">Pending</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="delivery-details">
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="detail-content">
+                            <h4>Estimated Delivery</h4>
+                            <p id="estimatedDelivery">Calculating...</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="detail-content">
+                            <h4>Delivery Address</h4>
+                            <p id="deliveryAddress">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="track-help-section">
+                <h3>Need Help?</h3>
+                <div class="help-grid">
+                    <a href="#contact" class="help-card">
+                        <i class="fas fa-headset"></i>
+                        <h4>Contact Support</h4>
+                        <p>24/7 customer service</p>
+                    </a>
+                    <a href="returns.html" class="help-card">
+                        <i class="fas fa-undo"></i>
+                        <h4>Returns</h4>
+                        <p>Easy return process</p>
+                    </a>
+                    <a href="shipping.html" class="help-card">
+                        <i class="fas fa-truck"></i>
+                        <h4>Shipping Info</h4>
+                        <p>Delivery details</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        const orderTrackForm = document.getElementById('orderTrackForm');
+        const trackingResult = document.getElementById('trackingResult');
+
+        orderTrackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const orderId = document.getElementById('orderId').value;
+            const email = document.getElementById('orderEmail').value;
+
+            // Show loading state
+            const submitBtn = document.querySelector('.track-order-btn');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Tracking...';
+
+            // Simulate API call
+            setTimeout(() => {
+                // Update tracking result
+                document.getElementById('displayOrderId').textContent = orderId;
+                document.getElementById('orderDate').textContent = new Date().toLocaleDateString();
+                document.getElementById('estimatedDelivery').textContent = '2-3 Business Days';
+                document.getElementById('deliveryAddress').textContent = '123 Example Street, City, Country';
+
+                // Show tracking result
+                trackingResult.style.display = 'block';
+                trackingResult.scrollIntoView({ behavior: 'smooth' });
+
+                // Reset button
+                submitBtn.innerHTML = '<i class="fas fa-search"></i> Track Now';
+            }, 2000);
+        });
+    </script>
+</body>
+</html> 

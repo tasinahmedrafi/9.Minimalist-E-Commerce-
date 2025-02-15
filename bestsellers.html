@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bestsellers - Minimalist Skincare</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo"><a href="index.html">Minimalist</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Menu</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="index.html#technology">Technology</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="shop-now-btn" onclick="window.location.href='index.html#products'">Shop Now</button>
+                <button class="cart-btn">
+                    Cart
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Include all modals from index.html -->
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <!-- Same cart modal content as index.html -->
+    </div>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cartNotification">
+        <!-- Same notification content as index.html -->
+    </div>
+
+    <!-- Subscribe Modal -->
+    <div class="subscribe-modal" id="subscribeModal">
+        <div class="subscribe-content">
+            <button class="close-subscribe">&times;</button>
+            <div class="subscribe-header">
+                <h3>Join Our Newsletter</h3>
+                <p>Get exclusive offers and skincare tips</p>
+            </div>
+            <form class="subscribe-form" id="subscribeForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Animation -->
+    <div class="success-animation" id="successAnimation">
+        <div class="success-content">
+            <div class="success-icon"></div>
+            <h2 class="success-title">Congratulations!</h2>
+            <p class="success-message">You've successfully subscribed to our newsletter.</p>
+        </div>
+    </div>
+
+    <!-- Bestsellers Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <span class="hero-tag">Our Collection</span>
+            <h1>Bestsellers</h1>
+            <p>Discover our most cherished formulations, backed by science and loved by thousands</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Happy Customers</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4.8★</span>
+                    <span class="stat-label">Average Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestsellers Grid -->
+    <section class="bestsellers-page">
+        <div class="container">
+            <div class="section-header">
+                <div class="header-content">
+                    <div class="header-filters">
+                        <div class="filter-group">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="serum">Serums</button>
+                            <button class="filter-btn" data-filter="treatment">Treatments</button>
+                        </div>
+                        <select class="sort-select">
+                            <option value="rating">Sort by Rating</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bestsellers-grid">
+                <!-- Product 1 -->
+                <div class="bestseller-card" data-rating="4.9">
+                    <span class="bestseller-badge">#1 Bestseller</span>
+                    <div class="bestseller-image">
+                        <img src="images/niacinamide.png" alt="Niacinamide Serum">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">4.9 (2.5k reviews)</span>
+                        </div>
+                        <h3>Niacinamide 10% + Zinc</h3>
+                        <p>Reduces blemishes and brightens skin</p>
+                        <div class="bestseller-price">
+                            <span class="price">$34</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bestseller-card" data-rating="4.8">
+                    <span class="bestseller-badge">#2 Bestseller</span>
+                    <div class="bestseller-image">
+                        <img src="images/Vitamin_C.webp" alt="Vitamin C Serum">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">4.8 (2.1k reviews)</span>
+                        </div>
+                        <h3>Vitamin C 10% + B5</h3>
+                        <p>Brightens and evens skin tone</p>
+                        <div class="bestseller-price">
+                            <span class="price">$38</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bestseller-card" data-rating="4.7">
+                    <span class="bestseller-badge">#3 Bestseller</span>
+                    <div class="bestseller-image">
+                        <img src="images/hyloranic acid.webp" alt="Hyaluronic Acid">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">4.7 (1.8k reviews)</span>
+                        </div>
+                        <h3>Hyaluronic Acid 2%</h3>
+                        <p>Deep hydration and plumping</p>
+                        <div class="bestseller-price">
+                            <span class="price">$28</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bestseller-card" data-rating="4.6">
+                    <span class="bestseller-badge">#4 Bestseller</span>
+                    <div class="bestseller-image">
+                        <img src="images/multi peptides.webp" alt="Multi-Peptide Complex">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">4.6 (1.6k reviews)</span>
+                        </div>
+                        <h3>Multi-Peptide Complex</h3>
+                        <p>Advanced anti-aging formula</p>
+                        <div class="bestseller-price">
+                            <span class="price">$45</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="back-to-home">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Subscribe Button Functionality
+        const subscribeBtn = document.querySelector('.subscribe-btn');
+        const subscribeModal = document.getElementById('subscribeModal');
+        const closeSubscribe = document.querySelector('.close-subscribe');
+        const subscribeForm = document.getElementById('subscribeForm');
+        const successAnimation = document.getElementById('successAnimation');
+
+        subscribeBtn.addEventListener('click', () => {
+            subscribeModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeSubscribe.addEventListener('click', () => {
+            subscribeModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        subscribeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(subscribeForm);
+            const name = formData.get('name');
+            
+            // Hide subscribe modal
+            subscribeModal.classList.remove('active');
+            
+            // Show success animation
+            successAnimation.classList.add('active');
+            
+            // Create confetti effect
+            createConfetti();
+            
+            // Reset form and clean up after animation
+            setTimeout(() => {
+                successAnimation.classList.remove('active');
+                document.body.style.overflow = '';
+                subscribeForm.reset();
+            }, 3000);
+        });
+
+        // Confetti animation function
+        function createConfetti() {
+            const colors = ['#ff4d00', '#ffd700', '#ff69b4', '#00ff00', '#ff1493'];
+            const confettiCount = 100;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                confetti.style.opacity = '1';
+                successAnimation.appendChild(confetti);
+                
+                // Animate confetti
+                const animation = confetti.animate([
+                    {
+                        transform: `translate(-50%, -50%) translate(${Math.random() * 100 - 50}px, ${-50}px) rotate(0deg)`,
+                        opacity: 1
+                    },
+                    {
+                        transform: `translate(-50%, -50%) translate(${Math.random() * 200 - 100}px, ${window.innerHeight}px) rotate(${Math.random() * 360}deg)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(.25,.46,.45,.94)',
+                    fill: 'forwards'
+                });
+                
+                // Clean up confetti after animation
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === subscribeModal) {
+                subscribeModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            if (e.target === successAnimation) {
+                successAnimation.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+</body>
+</html> 

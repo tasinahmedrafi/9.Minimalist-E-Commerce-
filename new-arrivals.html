@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals - Minimalist Skincare</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header (Same as index.html) -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo"><a href="index.html">Minimalist</a></div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Menu</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#technology">Technology</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="shop-now-btn" onclick="window.location.href='index.html#products'">Shop Now</button>
+                <button class="cart-btn">
+                    Cart
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Add cart modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <button class="close-cart">&times;</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be added here dynamically -->
+                <template id="cartItemTemplate">
+                    <div class="cart-item">
+                        <img src="" alt="" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title"></h4>
+                            <p class="cart-item-price"></p>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity"></span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                        </div>
+                        <button class="cart-item-remove">&times;</button>
+                    </div>
+                </template>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="total-amount">$0.00</span>
+                </div>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add cart notification -->
+    <div class="cart-notification" id="cartNotification">
+        <div class="notification-content">
+            <i class="check-icon">✓</i>
+            <div class="notification-product">
+                <img src="" alt="Product" id="notificationImage">
+                <div class="notification-details">
+                    <div class="product-name"></div>
+                    <div class="product-price"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add subscribe modal -->
+    <div class="subscribe-modal" id="subscribeModal">
+        <div class="subscribe-content">
+            <button class="close-subscribe">&times;</button>
+            <div class="subscribe-header">
+                <h3>Join Our Newsletter</h3>
+                <p>Get exclusive offers and skincare tips</p>
+            </div>
+            <form class="subscribe-form" id="subscribeForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Animation -->
+    <div class="success-animation" id="successAnimation">
+        <div class="success-content">
+            <div class="success-icon"></div>
+            <h2 class="success-title">Congratulations!</h2>
+            <p class="success-message">You've successfully subscribed to our newsletter.</p>
+        </div>
+    </div>
+
+    <!-- New Arrivals Hero Section -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <span class="hero-tag">Latest Collection</span>
+            <h1>New Arrivals</h1>
+            <p>Experience our latest breakthroughs in skincare innovation</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">New Formulas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5.0★</span>
+                    <span class="stat-label">Launch Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Grid -->
+    <section class="new-arrivals-page">
+        <div class="container">
+            <div class="section-header">
+                <div class="header-content">
+                    <div class="header-filters">
+                        <div class="filter-group">
+                            <button class="filter-btn active" data-filter="all">All New</button>
+                            <button class="filter-btn" data-filter="serum">New Serums</button>
+                            <button class="filter-btn" data-filter="treatment">New Treatments</button>
+                        </div>
+                        <select class="sort-select">
+                            <option value="newest">Newest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="new-arrivals-grid bestsellers-grid">
+                <!-- Product 1 -->
+                <div class="bestseller-card" data-category="serum">
+                    <span class="new-badge">New</span>
+                    <div class="bestseller-image">
+                        <img src="images/multi peptides.webp" alt="Multi-Peptide Complex">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">5.0 (New)</span>
+                        </div>
+                        <h3>Multi-Peptide Complex</h3>
+                        <p>Advanced anti-aging formula with 5 peptides</p>
+                        <div class="bestseller-price">
+                            <span class="price">$48</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bestseller-card" data-category="treatment">
+                    <span class="new-badge">New</span>
+                    <div class="bestseller-image">
+                        <img src="images/azelec acid.jpg" alt="Azelaic Acid">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">5.0 (New)</span>
+                        </div>
+                        <h3>Azelaic Acid 10%</h3>
+                        <p>Brightening and texture-improving solution</p>
+                        <div class="bestseller-price">
+                            <span class="price">$32</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bestseller-card" data-category="moisturizer">
+                    <span class="new-badge">New</span>
+                    <div class="bestseller-image">
+                        <img src="images/ceramide complex.jpg" alt="Ceramide Complex">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">5.0 (New)</span>
+                        </div>
+                        <h3>Ceramide Complex</h3>
+                        <p>Barrier-strengthening moisturizer</p>
+                        <div class="bestseller-price">
+                            <span class="price">$36</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bestseller-card" data-category="serum">
+                    <span class="new-badge">New</span>
+                    <div class="bestseller-image">
+                        <img src="images/tranexamic acid.webp" alt="Tranexamic Acid">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">5.0 (New)</span>
+                        </div>
+                        <h3>Tranexamic Acid 5%</h3>
+                        <p>Advanced hyperpigmentation treatment</p>
+                        <div class="bestseller-price">
+                            <span class="price">$42</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bestseller-card" data-category="treatment">
+                    <span class="new-badge">New</span>
+                    <div class="bestseller-image">
+                        <img src="images/pha toner.avif" alt="PHA Toner">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">5.0 (New)</span>
+                        </div>
+                        <h3>PHA 3% Toner</h3>
+                        <p>Gentle exfoliating toner for sensitive skin</p>
+                        <div class="bestseller-price">
+                            <span class="price">$28</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bestseller-card" data-category="moisturizer">
+                    <span class="new-badge">New</span>
+                    <div class="bestseller-image">
+                        <img src="images/cica gel_.jpg" alt="Cica Gel">
+                        <div class="bestseller-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="bestseller-info">
+                        <div class="bestseller-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-number">5.0 (New)</span>
+                        </div>
+                        <h3>Cica Calming Gel</h3>
+                        <p>Soothing gel for irritated skin</p>
+                        <div class="bestseller-price">
+                            <span class="price">$34</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="back-to-home">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

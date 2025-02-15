@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist - Scientific Skincare</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo"><a href="index.html">Minimalist</a></div>
+            <ul class="nav-menu">
+                <li><a href="#home">Menu</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="new-arrivals.html" target="_blank">New Arrivals</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="shop-now-btn">Shop Now</button>
+                <button class="cart-btn">
+                    Cart
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Add this right after the header section -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <button class="close-cart">&times;</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be added here dynamically -->
+                <template id="cartItemTemplate">
+                    <div class="cart-item">
+                        <img src="" alt="" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title"></h4>
+                            <p class="cart-item-price"></p>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn minus">-</button>
+                                <span class="quantity"></span>
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                        </div>
+                        <button class="cart-item-remove">&times;</button>
+                    </div>
+                </template>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="total-amount">$0.00</span>
+                </div>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update the cart notification div -->
+    <div class="cart-notification" id="cartNotification">
+        <div class="notification-content">
+            <i class="check-icon">✓</i>
+            <div class="notification-product">
+                <img src="" alt="Product" id="notificationImage">
+                <div class="notification-details">
+                    <div class="product-name"></div>
+                    <div class="product-price"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this for the search functionality -->
+    <div class="search-modal" id="searchModal">
+        <div class="search-content">
+            <div class="search-header">
+                <input type="text" placeholder="Search products..." id="searchInput">
+                <button class="close-search">&times;</button>
+            </div>
+            <div class="search-results">
+                <!-- Search results will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this after the search modal -->
+    <div class="subscribe-modal" id="subscribeModal">
+        <div class="subscribe-content">
+            <button class="close-subscribe">&times;</button>
+            <div class="subscribe-header">
+                <h3>Join Our Newsletter</h3>
+                <p>Get exclusive offers and skincare tips</p>
+            </div>
+            <form class="subscribe-form" id="subscribeForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Animation -->
+    <div class="success-animation" id="successAnimation">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 class="success-title" style="color: #e78e08;">Subscription Confirmed!</h2>
+            <p class="success-message" style="color:#2196F3;">Thank you for joining our community. Get ready for exclusive offers and skincare tips delivered to your inbox.</p>
+        </div>
+    </div>
+
+    <!-- Add this after the cart notification -->
+    <div class="quick-shop-modal" id="quickShopModal">
+        <div class="quick-shop-content">
+            <button class="close-quick-shop">&times;</button>
+            <div class="quick-shop-header">
+                <h2>Shop Our Bestsellers</h2>
+                <p>Discover our most loved products</p>
+            </div>
+            <div class="quick-shop-grid">
+                <!-- Product cards will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this after the cart modal -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <div class="quick-view-content">
+            <button class="close-quick-view">&times;</button>
+            <div class="quick-view-grid">
+                <div class="quick-view-image">
+                    <img src="" alt="" id="quickViewImage">
+                </div>
+                <div class="quick-view-details">
+                    <h2 class="quick-view-title"></h2>
+                    <p class="quick-view-description"></p>
+                    <div class="quick-view-price"></div>
+                    <div class="product-benefits">
+                        <h3>Benefits</h3>
+                        <ul class="benefits-list">
+                            <!-- Benefits will be added dynamically -->
+                        </ul>
+                    </div>
+                    <div class="product-ingredients">
+                        <h3>Key Ingredients</h3>
+                        <p class="ingredients-text"></p>
+                    </div>
+                    <div class="quick-view-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="add-to-cart-quick">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="promo-banner">
+                <div class="promo-header">
+                    <div class="promo-tag">
+                        <i class="fas fa-bolt"></i>
+                        <span>Flash Sale</span>
+                    </div>
+                    <div class="promo-status">
+                        <span class="pulse-dot"></span>
+                        <span>Limited Time Offer</span>
+                    </div>
+                </div>
+                <div class="promo-content">
+                    <div class="discount-wrapper">
+                        <span class="discount">22.9% OFF</span>
+                        <span class="discount-label">Sitewide Discount</span>
+                    </div>
+                    <div class="promo-code-wrapper">
+                        <span class="promo-label">Use Code:</span>
+                        <div class="code-box">
+                            <span class="promo-code">MINIMALIST229</span>
+                            <button class="copy-code" id="copyCode">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="savings-info">
+                        <i class="fas fa-tag"></i>
+                        <span>Save up to $50 on your purchase</span>
+                    </div>
+                </div>
+                <div class="countdown-wrapper">
+                    <div class="countdown-label">
+                        <i class="fas fa-clock"></i>
+                        <span>Offer Ends In:</span>
+                    </div>
+                    <div class="countdown" id="promoCountdown">
+                        <span class="time-unit">
+                            <span class="number" id="hours">24</span>
+                            <span class="label">Hours</span>
+                        </span>
+                        <span class="separator">:</span>
+                        <span class="time-unit">
+                            <span class="number" id="minutes">00</span>
+                            <span class="label">Minutes</span>
+                        </span>
+                        <span class="separator">:</span>
+                        <span class="time-unit">
+                            <span class="number" id="seconds">00</span>
+                            <span class="label">Seconds</span>
+                        </span>
+                    </div>
+                    <div class="stock-status">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%"></div>
+                        </div>
+                        <span class="stock-text">🔥 65% of discount codes claimed</span>
+                    </div>
+                </div>
+            </div>
+            <h1>Minimalist</h1>
+            <p class="hero-tagline">WE BELIEVE THAT SKINCARE SHOULD BE MORE THAN JUST A SOLUTION, IT'S A JOURNEY TOWARDS CONFIDENCE, HEALTH, AND EMPOWERMENT.</p>
+            <div class="hero-features">
+                <div class="feature premium-text">
+                    <i class="fas fa-award"></i>
+                    <span>Premium Quality</span>
+                </div>
+                <div class="feature shipping-text">
+                    <i class="fas fa-truck"></i>
+                    <span>Free Shipping Over $50</span>
+                </div>
+                <div class="feature guarantee-text">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Money Back Guarantee</span>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <button class="shop-now-btn primary-btn">
+                    <div class="btn-content">
+                        <span class="btn-text">Shop Now</span>
+                        <span class="btn-discount">Save 22.9% Today</span>
+                    </div>
+                    <div class="btn-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </button>
+                <button class="learn-more-btn secondary-btn">
+                    <div class="btn-content">
+                        <span class="btn-text">Learn More</span>
+                        <span class="btn-subtext">About Our Products</span>
+                    </div>
+                    <div class="btn-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/featued product.webp" alt="Featured Product">
+        </div>
+    </section>
+
+    <!-- Add these sections after the hero section -->
+    <section id="menu" class="menu-section">
+        <div class="menu-container">
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Skin Care</h3>
+                    <ul>
+                        <li><a href="#serums">Serums</a></li>
+                        <li><a href="#moisturizers">Moisturizers</a></li>
+                        <li><a href="#treatments">Treatments</a></li>
+                    </ul>
+                </div>
+                <div class="menu-item">
+                    <h3>Collections</h3>
+                    <ul>
+                        <li><a href="bestsellers.html" target="_blank">Bestsellers</a></li>
+                        <li><a href="new-arrivals.html" target="_blank">New Arrivals</a></li>
+                        <li><a href="#sets">Value Sets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="products" class="products">
+        <div class="section-header">
+            <div class="header-content">
+                <span class="section-tag">Our Products</span>
+                <h2>Meet Our Skincare Heroes</h2>
+                <p class="section-description">Scientifically formulated with powerful active ingredients for visible results</p>
+                <div class="section-links">
+                    <a href="bestsellers.html" class="section-link" target="_blank">View Bestsellers</a>
+                </div>
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="skin">Skin</button>
+                <button class="filter-btn" data-category="hair">Hair</button>
+                <button class="filter-btn" data-category="body">Body</button>
+            </div>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" data-category="skin">
+                <div class="product-image">
+                    <img src="images/niacinamide.png" alt="Niacinamide Serum">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Niacinamide 10% + Zinc</h3>
+                    <p>For Bright & Clear Skin</p>
+                    <div class="product-price">
+                        <span>$34</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="skin">
+                <div class="product-image">
+                    <img src="images/Vitamin_C.webp" alt="Vitamin C Serum">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Vitamin C 10% + B5</h3>
+                    <p>For Glowing Skin</p>
+                    <div class="product-price">
+                        <span>$38</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="skin">
+                <div class="product-image">
+                    <img src="images/hyloranic acid.webp" alt="Hyaluronic Acid">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Hyaluronic Acid 2%</h3>
+                    <p>For Deep Hydration</p>
+                    <div class="product-price">
+                        <span>$28</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="body">
+                <div class="product-image">
+                    <img src="images/multi peptides.webp" alt="Multi-Peptide Body Lotion">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Multi-Peptide Body Lotion</h3>
+                    <p>For Firm & Smooth Skin</p>
+                    <div class="product-price">
+                        <span>$45</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="body">
+                <div class="product-image">
+                    <img src="images/body oil.jpg" alt="Body Oil">
+                    <div class="product-overlay">
+                        <button class="quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Nourishing Body Oil</h3>
+                    <p>For Deep Hydration</p>
+                    <div class="product-price">
+                        <span>$36</span>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update the Science Section -->
+    <section class="science">
+        <div class="science-container">
+            <div class="science-header">
+                <h2>The Science Behind Our Products</h2>
+                <p>Discover our breakthrough ingredients and formulations</p>
+            </div>
+            <div class="ingredients-grid">
+                <div class="ingredient">
+                    <div class="ingredient-icon">🧪</div>
+                    <h3>Niacinamide</h3>
+                    <p class="formula">C6H6N2O</p>
+                    <p class="function">Vitamin B3 that helps improve skin texture and reduce inflammation</p>
+                </div>
+                <div class="ingredient">
+                    <div class="ingredient-icon">🔬</div>
+                    <h3>Hyaluronic Acid</h3>
+                    <p class="formula">C14H21NO11</p>
+                    <p class="function">Natural moisturizer that can hold up to 1000x its weight in water</p>
+                </div>
+                <div class="ingredient">
+                    <div class="ingredient-icon">⚗️</div>
+                    <h3>Peptides</h3>
+                    <p class="formula">Amino Acid Chains</p>
+                    <p class="function">Building blocks that help boost collagen production</p>
+                </div>
+                <div class="ingredient">
+                    <div class="ingredient-icon">🧬</div>
+                    <h3>Vitamin C</h3>
+                    <p class="formula">C6H8O6</p>
+                    <p class="function">Powerful antioxidant that brightens and protects skin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update the Store Locations section -->
+    <section class="store-locations">
+        <div class="locations-container">
+            <div class="locations-header">
+                <h2>Visit Our Stores</h2>
+                <p>Find us at premium locations across Bangladesh</p>
+            </div>
+            <div class="locations-grid">
+                <div class="location">
+                    <div class="location-icon">📍</div>
+                    <h3>Banani Flagship Store</h3>
+                    <div class="location-details">
+                        <p>Road 11, Block F</p>
+                        <p>Banani, Dhaka 1213</p>
+                        <p class="location-hours">Open: 10 AM - 9 PM</p>
+                        <p class="location-phone">+880 1700-000000</p>
+                    </div>
+                </div>
+
+                <div class="location">
+                    <div class="location-icon">📍</div>
+                    <h3>Gulshan Branch</h3>
+                    <div class="location-details">
+                        <p>Plot 23, Gulshan Avenue</p>
+                        <p>Gulshan-1, Dhaka 1212</p>
+                        <p class="location-hours">Open: 10 AM - 9 PM</p>
+                        <p class="location-phone">+880 1700-000001</p>
+                    </div>
+                </div>
+
+                <div class="location">
+                    <div class="location-icon">📍</div>
+                    <h3>Dhanmondi Store</h3>
+                    <div class="location-details">
+                        <p>House 42, Road 27</p>
+                        <p>Dhanmondi, Dhaka 1209</p>
+                        <p class="location-hours">Open: 10 AM - 8 PM</p>
+                        <p class="location-phone">+880 1700-000002</p>
+                    </div>
+                </div>
+
+                <div class="location">
+                    <div class="location-icon">📍</div>
+                    <h3>Uttara Branch</h3>
+                    <div class="location-details">
+                        <p>Plot 13, Sector 4</p>
+                        <p>Uttara, Dhaka 1230</p>
+                        <p class="location-hours">Open: 10 AM - 8 PM</p>
+                        <p class="location-phone">+880 1700-000003</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update the technology section -->
+    <section id="technology" class="technology">
+        <div class="tech-container">
+            <h2>Our Technology</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon">🔬</div>
+                    <h3>Research & Development</h3>
+                    <p>Our state-of-the-art laboratory develops breakthrough formulations.</p>
+                    <div class="tech-hover-content">
+                        <ul>
+                            <li>Advanced Clinical Testing</li>
+                            <li>Innovative Ingredients</li>
+                            <li>Scientific Research</li>
+                            <li>Quality Control</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🧪</div>
+                    <h3>Clinical Testing</h3>
+                    <p>Rigorous testing ensures maximum efficacy and safety.</p>
+                    <div class="tech-hover-content">
+                        <ul>
+                            <li>Safety Assessments</li>
+                            <li>Efficacy Studies</li>
+                            <li>Dermatologist Tested</li>
+                            <li>Clinical Trials</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🌿</div>
+                    <h3>Natural Innovation</h3>
+                    <p>Combining nature with cutting-edge science.</p>
+                    <div class="tech-hover-content">
+                        <ul>
+                            <li>Sustainable Sourcing</li>
+                            <li>Clean Formulations</li>
+                            <li>Eco-friendly Process</li>
+                            <li>Green Technology</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update the About Us section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-header">
+                <h2>Our Story</h2>
+                <p>Pioneering Scientific Skincare Since 2020</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Mission</h3>
+                        <p>At Minimalist, we believe in the power of science-backed skincare. Our mission is to create effective, transparent, and affordable skincare solutions that deliver real results.</p>
+                        
+                        <h3>Our Values</h3>
+                        <ul class="values-list">
+                            <li>
+                                <span class="value-icon">🧪</span>
+                                <div class="value-content">
+                                    <h4>Scientific Approach</h4>
+                                    <p>Every formula is backed by extensive research and clinical testing</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="value-icon">🌿</span>
+                                <div class="value-content">
+                                    <h4>Sustainability</h4>
+                                    <p>Committed to eco-friendly practices and responsible sourcing</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="value-icon">💡</span>
+                                <div class="value-content">
+                                    <h4>Innovation</h4>
+                                    <p>Continuously developing breakthrough formulations</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <span class="stat-number gradient-text">50K+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number gradient-text">30+</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number gradient-text">15+</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number gradient-text">100%</span>
+                        <span class="stat-label">Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this before the footer -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for any questions or concerns</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="icon">📍</i>
+                        <h3>Visit Our Head Office</h3>
+                        <p>House 45, Road 16</p>
+                        <p>Banani, Dhaka 1213</p>
+                        <p>Bangladesh</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="icon">📞</i>
+                        <h3>Call Us</h3>
+                        <p>+880 1700-000000</p>
+                        <p>+880 2-9876543</p>
+                        <p>Sat - Thu, 10am - 8pm</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="icon">✉️</i>
+                        <h3>Email Us</h3>
+                        <p>info@minimalist.com.bd</p>
+                        <p>support@minimalist.com.bd</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="icon">🏢</i>
+                        <h3>Branch Locations</h3>
+                        <p>Gulshan: Level 5, Pink City</p>
+                        <p>Dhanmondi: Road 27, House 342</p>
+                        <p>Uttara: Sector 4, Road 12</p>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add this for the success message -->
+    <div class="contact-success-modal" id="contactSuccessModal">
+        <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully.</p>
+            <button class="close-success">Close</button>
+        </div>
+    </div>
+
+    <!-- Update the Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section brand">
+                    <h3 class="footer-logo">Minimalist</h3>
+                    <p class="brand-description">Scientific skincare solutions for visible results. Backed by research, driven by innovation.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#products" >Shop All</a></li>
+                        <li><a href="bestsellers.html" target="_blank">Bestsellers</a></li>
+                        <li><a href="new-arrivals.html" target="_blank">New Arrivals</a></li>
+                        <li><a href="#about" >About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Help & Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="shipping.html" target="_blank">Shipping Info</a></li>
+                        <li><a href="returns.html" target="_blank">Returns Policy</a></li>
+                        <li><a href="trackorder.html" target="_blank">Track Order</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe to our newsletter for exclusive offers and skincare tips.</p>
+                    <form class="footer-subscribe">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p>&copy; 2024 Minimalist. All rights reserved.</p>
+                    <div class="footer-legal">
+                        <a href="privacy.html" target="_blank">Privacy Policy</a>
+                        <a href="terms-services.html" target="_blank">Terms of Service</a>
+                        <a href="sitemap.html" target="_blank">Sitemap</a>
+                    </div>
+                </div>
+                <div class="payment-methods">
+                    <div class="payment-icon">
+                        <i class="fab fa-cc-visa"></i>
+                    </div>
+                    <div class="payment-icon">
+                        <i class="fab fa-cc-mastercard"></i>
+                    </div>
+                    <div class="payment-icon bkash-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 0C8.955 0 0 8.955 0 20s8.955 20 20 20 20-8.955 20-20S31.045 0 20 0zm-2 29.754c-2.166-.48-4.093-1.975-4.093-4.544 0-2.304 1.876-3.92 3.814-4.762l1.57-.682v-6.97c0-.78.634-1.413 1.414-1.413.78 0 1.413.634 1.413 1.413v6.97l1.571.682c1.938.842 3.814 2.458 3.814 4.762 0 2.569-1.927 4.064-4.093 4.544v1.833c0 .78-.634 1.413-1.413 1.413-.78 0-1.414-.634-1.414-1.413v-1.833z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="payment-icon nagad-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 0C8.955 0 0 8.955 0 20s8.955 20 20 20 20-8.955 20-20S31.045 0 20 0zm-4.983 28.87L9.13 20l5.887-8.87L20.904 20l-5.887 8.87zM25.113 20l-5.887 8.87L25.113 20z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="payment-icon rocket-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 0C8.955 0 0 8.955 0 20s8.955 20 20 20 20-8.955 20-20S31.045 0 20 0zm2.5 30h-5v-7.5L10 15l7.5-7.5h5L30 15l-7.5 7.5V30z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="payment-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
